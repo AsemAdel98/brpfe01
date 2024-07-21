@@ -2,26 +2,49 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
 
-## Development server
+# Angular + Bootstrap Registration Project
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This project is a simple Angular application that includes the following pages:
 
-## Code scaffolding
+- Registration page
+- Business Information page
+- Verification Code page
+- Created Successfully page
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+It uses Bootstrap for styling and Font Awesome for icons.
 
-## Build
+## Demo
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+You can view the live demo of the project [here](https://brpfe01.web.app).
 
-## Running unit tests
+## Features
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- User registration form
+- Dynamic business information form
+- Verification code input with timer
+- Success message upon successful creation
+- Password visibility toggle
+- Country code dropdown with flags for phone number input
+- Checkbox options with icons and background color change on check
 
-## Running end-to-end tests
+### Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. **Clone the repository:**
+    git clone https://github.com/AsemAdel98/brpfe01.git
+   cd brpfe01
 
-## Further help
+2. **Install dependencies:**
+   npm install
+   
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+3. **Run the application:**
+   ng serve
+
+## Usage
+
+- Navigate to the registration page to create a new user account.
+- Enter the verification code sent to your email.
+- Fill in the business information on the next page.
+- Upon successful verification, you will see a success message.
+
+
