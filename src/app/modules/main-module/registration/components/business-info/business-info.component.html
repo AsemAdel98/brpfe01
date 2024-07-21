@@ -89,7 +89,7 @@
             <button
               class="btn btn-outline-secondary dropdown-toggle w-100 d-flex justify-content-between align-items-center "
               type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <div><i [class]="selectedSocialValue?.icon"></i>&nbsp;&nbsp; {{selectedSocialValue?.name}}</div>
+              <div><i [class]="selectedSocialValue.icon"></i>&nbsp;&nbsp; {{selectedSocialValue.name}}</div>
             </button>
             <ul class="dropdown-menu w-100">
               <li *ngFor="let item of socialMedia" (click)="selectSocialMedia(item)">
