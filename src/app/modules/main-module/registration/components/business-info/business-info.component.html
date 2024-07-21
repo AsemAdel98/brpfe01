@@ -37,7 +37,7 @@
         <!-- ------------------------ types ------------------------ -->
         <div class="col-xl-12 types">
           <label class="form-label">{{'BUSINESS_INFO.BUSINESS_TYPES'|translate}}</label>
-          <div class="d-flex">
+          <div class="d-flex flex-wrap">
             <div class="border m-2 mt-0" *ngFor="let option of businessTypes">
               <input class="form-check-input" type="checkbox" [id]="option.id" [value]="option.value"
                 (change)="onCheckboxChange($event)">

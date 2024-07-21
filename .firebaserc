@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "brpfe01",
+    "staging": "brpfe01"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}
