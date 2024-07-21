@@ -1,143 +1,146 @@
-<div class="row m-0" *ngIf="!isLoading">
-  <div class="col-xl-3 p-0 slide-container">
-    <img src="../../../../../../assets/imgs/glamera.png" class="background" alt="...">
-    <div class="wrapper">
-      <img src="../../../../../../assets/imgs/glamera-logo.png" alt="...">
-      <h2>{{'BUSINESS_INFO.CARD_TITLE'|translate}}</h2>
-      <P>{{'BUSINESS_INFO.CARD_PR'|translate}}</P>
-    </div>
-
-
-  </div>
-  <div class="col-xl-9">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <button class="btn btn-outline" (click)="perviousPage.emit(false)"><i class="fa-solid fa-arrow-left"></i></button>
-      <div class="d-flex align-items-center">
-        <p class="text-end m-0">{{'REGISTRATION_FORM.HAVING_TROUBLES'|translate}}? <a href="#" target="_blank"
-            class="get-help">{{'REGISTRATION_FORM.GET_HELP'|translate}}</a></p>
-        <app-language-button></app-language-button>
+@if (!isLoading) {
+  <div class="row m-0">
+    <div class="col-xl-3 p-0 slide-container">
+      <img src="../../../../../../assets/imgs/glamera.png" class="background" alt="...">
+      <div class="wrapper">
+        <img src="../../../../../../assets/imgs/glamera-logo.png" alt="...">
+        <h2>{{'BUSINESS_INFO.CARD_TITLE'|translate}}</h2>
+        <P>{{'BUSINESS_INFO.CARD_PR'|translate}}</P>
       </div>
+
+
     </div>
-    <h2>{{'BUSINESS_INFO.CHOOSE_TYPE_OF_BUSINESS'|translate}}</h2>
-    <p class="mb-0">{{'BUSINESS_INFO.CHOOSE_TYPE_OF_BUSINESS_PR'|translate}}</p>
-
-    <form [formGroup]="businessInfoForm">
-      <div class="row">
-        <!-- ------------------------ business_type ------------------------ -->
-        <div class="col-xl-12">
-          <label for="Business_Type" class="form-label">{{'BUSINESS_INFO.BUSINESS_TYPE'|translate}}</label>
-          <input type="text" formControlName="business_type" class="form-control" id="Business_Type">
-          <div
-            *ngIf="businessInfoForm.controls['business_type'].invalid && (businessInfoForm.controls['business_type'].dirty || businessInfoForm.controls['business_type'].touched)">
-            <small class="text-danger"
-              *ngIf="businessInfoForm.controls['business_type'].errors?.['required']">{{'BUSINESS_INFO.BUSINESS_TYPE'|translate}}
-              {{'BUSINESS_INFO.IS_REQUIRED'|translate}}</small>
-          </div>
-        </div>
-        <!-- ------------------------ types ------------------------ -->
-        <div class="col-xl-12 types">
-          <label class="form-label">{{'BUSINESS_INFO.BUSINESS_TYPES'|translate}}</label>
-          <div class="d-flex flex-wrap">
-            <div class="border m-2 mt-0" *ngFor="let option of businessTypes">
-              <input class="form-check-input" type="checkbox" [id]="option.id" [value]="option.value"
-                (change)="onCheckboxChange($event)">
-              <label class="form-check-label d-flex align-items-center" [for]="option.id">
-                <i [class]="option.icon + ' p-2 checkbox-icon'"></i>&nbsp; {{ option.label }}
-              </label>
-            </div>
-          </div>
-        </div>
-        <!-- ------------------------ governorate ------------------------ -->
-        <div class="col-xl-6">
-          <label for="governorate" class="form-label">{{'BUSINESS_INFO.GOVERNORATE'|translate}}</label>
-          <select class="form-select" formControlName="governorate" id="governorate"
-            (change)="selectCountry($event.target)">
-            @for (Governorate of governorates; track $index) {
-            <option [value]="Governorate.id">{{Governorate.name}}</option>
-            }
-          </select>
-          <div
-            *ngIf="businessInfoForm.controls['governorate'].invalid && (businessInfoForm.controls['governorate'].dirty || businessInfoForm.controls['governorate'].touched)">
-            <small class="text-danger"
-              *ngIf="businessInfoForm.controls['governorate'].errors?.['required']">{{'BUSINESS_INFO.GOVERNORATE'|translate}}
-              {{'BUSINESS_INFO.IS_REQUIRED'|translate}}</small>
-          </div>
-        </div>
-        <!-- ------------------------ district ------------------------ -->
-        <div class="col-xl-6">
-          <label for="district" class="form-label">{{'BUSINESS_INFO.DISTRICT'|translate}}</label>
-          <select class="form-select" formControlName="district" id="district">
-            @if (districts) {
-            @for (district of districts; track $index) {
-            <option [value]="district.id">{{district.name}}</option>
-            }
-            }@else {
-            <option disabled>{{'BUSINESS_INFO.NO_FOUND_DATA'|translate}}</option>
-            }
-          </select>
-          <div
-            *ngIf="businessInfoForm.controls['district'].invalid && (businessInfoForm.controls['district'].dirty || businessInfoForm.controls['district'].touched)">
-            <small class="text-danger"
-              *ngIf="businessInfoForm.controls['district'].errors?.['required']">{{'BUSINESS_INFO.DISTRICT'|translate}}
-              {{'BUSINESS_INFO.IS_REQUIRED'|translate}}</small>
-          </div>
-        </div>
-        <!-- ------------------------ how_know_us ------------------------ -->
-        <div class="col-xl-6">
-          <label for="how_know_us" class="form-label">{{'BUSINESS_INFO.HOW_KNOW_US'|translate}}?</label>
-          <div class="input-group">
-            <button
-              class="btn btn-outline-secondary dropdown-toggle w-100 d-flex justify-content-between align-items-center "
-              type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <div><i [class]="selectedSocialValue.icon"></i>&nbsp;&nbsp; {{selectedSocialValue.name}}</div>
-            </button>
-            <ul class="dropdown-menu w-100">
-              <li *ngFor="let item of socialMedia" (click)="selectSocialMedia(item)">
-                <a class="dropdown-item">
-                  <i [class]="item.icon"></i>
-                  &nbsp;&nbsp; {{item.name}}
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- ------------------------ Are you currently using system ------------------------ -->
-        <div class="col-xl-6">
-          <label for="how_know_us" class="form-label">{{'BUSINESS_INFO.ARE_CURRENTLY_USING_SYSTEM'|translate}}?</label>
-          <div class="d-flex justify-content-between">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" formControlName="isCurrentlyUsing" value="yes" id="yes">
-              <label class="form-check-label" for="yes">
-                {{'BUSINESS_INFO.YES'|translate}}
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" formControlName="isCurrentlyUsing" value="no" id="no">
-              <label class="form-check-label" for="no">
-                {{'BUSINESS_INFO.NO'|translate}}
-              </label>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="d-flex justify-content-end mt-3">
-          <button type="button" [disabled]="!businessInfoForm.valid" class="btn btn-primary"
-            (click)="getBusinessInfoValue()">{{'BUSINESS_INFO.CREATE_ACCOUNT'|translate}}&nbsp;&nbsp;<i
-              class="fa-solid fa-arrow-right"></i></button>
+    <div class="col-xl-9">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <button class="btn btn-outline" (click)="perviousPage.emit()"><i class="fa-solid fa-arrow-left"></i></button>
+        <div class="d-flex align-items-center">
+          <p class="text-end m-0">{{'REGISTRATION_FORM.HAVING_TROUBLES'|translate}}? <a href="#" target="_blank"
+              class="get-help">{{'REGISTRATION_FORM.GET_HELP'|translate}}</a></p>
+          <app-language-button></app-language-button>
         </div>
       </div>
-    </form>
+      <h2>{{'BUSINESS_INFO.CHOOSE_TYPE_OF_BUSINESS'|translate}}</h2>
+      <p class="mb-0">{{'BUSINESS_INFO.CHOOSE_TYPE_OF_BUSINESS_PR'|translate}}</p>
 
-  </div>
-</div>
+      <form [formGroup]="registrationForm">
+        <div class="row">
+          <!-- ------------------------ business_type ------------------------ -->
+          <div class="col-xl-12">
+            <label for="Business_Type" class="form-label">{{'BUSINESS_INFO.BUSINESS_TYPE'|translate}}</label>
+            <input type="text" formControlName="business_type" class="form-control" id="Business_Type">
+            <div
+              *ngIf="registrationForm.controls['business_type'].invalid && (registrationForm.controls['business_type'].dirty || registrationForm.controls['business_type'].touched)">
+              <small class="text-danger"
+                *ngIf="registrationForm.controls['business_type'].errors?.['required']">{{'BUSINESS_INFO.BUSINESS_TYPE'|translate}}
+                {{'BUSINESS_INFO.IS_REQUIRED'|translate}}</small>
+            </div>
+          </div>
+          <!-- ------------------------ types ------------------------ -->
+          <div class="col-xl-12 types">
+            <label class="form-label">{{'BUSINESS_INFO.BUSINESS_TYPES'|translate}}</label>
+            <div class="d-flex flex-wrap">
+              <div class="border m-2 mt-0" *ngFor="let option of businessTypes">
+                <input class="form-check-input" type="checkbox" [id]="option.id" [value]="option.value"
+                  (change)="onCheckboxChange($event)">
+                <label class="form-check-label d-flex align-items-center" [for]="option.id">
+                  <i [class]="option.icon + ' p-2 checkbox-icon'"></i>&nbsp; {{ option.label }}
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- ------------------------ governorate ------------------------ -->
+          <div class="col-xl-6">
+            <label for="governorate" class="form-label">{{'BUSINESS_INFO.GOVERNORATE'|translate}}</label>
+            <select class="form-select" formControlName="governorate" id="governorate"
+              (change)="selectCountry($event.target)">
+              @for (Governorate of governorates; track $index) {
+              <option [value]="Governorate.id">{{Governorate.name}}</option>
+              }
+            </select>
+            <div
+              *ngIf="registrationForm.controls['governorate'].invalid && (registrationForm.controls['governorate'].dirty || registrationForm.controls['governorate'].touched)">
+              <small class="text-danger"
+                *ngIf="registrationForm.controls['governorate'].errors?.['required']">{{'BUSINESS_INFO.GOVERNORATE'|translate}}
+                {{'BUSINESS_INFO.IS_REQUIRED'|translate}}</small>
+            </div>
+          </div>
+          <!-- ------------------------ district ------------------------ -->
+          <div class="col-xl-6">
+            <label for="district" class="form-label">{{'BUSINESS_INFO.DISTRICT'|translate}}</label>
+            <select class="form-select" formControlName="district" id="district">
+              @if (districts) {
+              @for (district of districts; track $index) {
+              <option [value]="district.id">{{district.name}}</option>
+              }
+              }@else {
+              <option disabled>{{'BUSINESS_INFO.NO_FOUND_DATA'|translate}}</option>
+              }
+            </select>
+            <div
+              *ngIf="registrationForm.controls['district'].invalid && (registrationForm.controls['district'].dirty || registrationForm.controls['district'].touched)">
+              <small class="text-danger"
+                *ngIf="registrationForm.controls['district'].errors?.['required']">{{'BUSINESS_INFO.DISTRICT'|translate}}
+                {{'BUSINESS_INFO.IS_REQUIRED'|translate}}</small>
+            </div>
+          </div>
+          <!-- ------------------------ how_know_us ------------------------ -->
+          <div class="col-xl-6">
+            <label for="how_know_us" class="form-label">{{'BUSINESS_INFO.HOW_KNOW_US'|translate}}?</label>
+            <div class="input-group">
+              <button
+                class="btn btn-outline-secondary dropdown-toggle w-100 d-flex justify-content-between align-items-center "
+                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <div><i [class]="selectedSocialValue.icon"></i>&nbsp;&nbsp; {{selectedSocialValue.name}}</div>
+              </button>
+              <ul class="dropdown-menu w-100">
+                <li *ngFor="let item of socialMedia" (click)="selectSocialMedia(item)">
+                  <a class="dropdown-item">
+                    <i [class]="item.icon"></i>
+                    &nbsp;&nbsp; {{item.name}}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
 
-<div class="sweet-msg" *ngIf="isLoading">
-  <div>
-    <img src="../../../../../../assets/imgs/sweet-msg.gif">
-    <h2>{{'SWEET_MSG.SUCCESSFULLY'|translate}}</h2>
-    <p>{{'SWEET_MSG.SUCCESSFULLY_CREATE_PR'|translate}}</p>
-    <p>{{'SWEET_MSG.SUCCESSFULLY_PR'|translate}}</p>
+          <!-- ------------------------ Are you currently using system ------------------------ -->
+          <div class="col-xl-6">
+            <label for="how_know_us" class="form-label">{{'BUSINESS_INFO.ARE_CURRENTLY_USING_SYSTEM'|translate}}?</label>
+            <div class="d-flex justify-content-between">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="isCurrentlyUsing" value="yes" id="yes">
+                <label class="form-check-label" for="yes">
+                  {{'BUSINESS_INFO.YES'|translate}}
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="isCurrentlyUsing" value="no" id="no">
+                <label class="form-check-label" for="no">
+                  {{'BUSINESS_INFO.NO'|translate}}
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="d-flex justify-content-end mt-3">
+            <button type="button" [disabled]="!registrationForm.valid" class="btn btn-primary"
+              (click)="getBusinessInfoValue()">{{'BUSINESS_INFO.CREATE_ACCOUNT'|translate}}&nbsp;&nbsp;<i
+                class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </form>
+
+    </div>
   </div>
-</div>
+}@else {
+  <div class="sweet-msg">
+    <div>
+      <img src="../../../../../../assets/imgs/sweet-msg.gif">
+      <h2>{{'SWEET_MSG.SUCCESSFULLY'|translate}}</h2>
+      <p>{{'SWEET_MSG.SUCCESSFULLY_CREATE_PR'|translate}}</p>
+      <p>{{'SWEET_MSG.SUCCESSFULLY_PR'|translate}}</p>
+    </div>
+  </div>
+}
+

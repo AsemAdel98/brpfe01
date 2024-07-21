@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Governorates } from './Governorates ';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-business-info',
@@ -9,8 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class BusinessInfoComponent {
   @Output() perviousPage = new EventEmitter<boolean>();
-  @Output() businessInfoFormValue = new EventEmitter<any>();
-  @Input() registrationValues: any;
+  @Input() registrationForm!: FormGroup;
   governorates: any;
   selectedGovernorate: any;
   governorateObj: any = {};
@@ -28,44 +27,23 @@ export class BusinessInfoComponent {
     { id: 'checkbox3', value: 'Spa', label: 'Spa', icon: 'fa-solid fa-spa' },
     { id: 'checkbox4', value: 'Clinic', label: 'Clinic', icon: 'fa-solid fa-stethoscope' }
   ];
-  businessInfoForm!: FormGroup;
   selectedValues: string[] = [];
   selectedSocialValue = this.socialMedia[0];
 
-  constructor(private fb: FormBuilder) { }
-
 
   ngOnInit(): void {
-    this.initForm()
     this.governorates = Governorates;
     for (const governorate of this.governorates) {
       this.governorateObj[governorate.id] = governorate;
     }
+    this.registrationForm.get('how_know_us')?.setValue(this.selectedSocialValue.name);
   }
 
 
   selectSocialMedia(item: any): void {
     this.selectedSocialValue = item;
-    this.businessInfoForm.get('how_know_us')?.setValue(item.name);
+    this.registrationForm.get('how_know_us')?.setValue(item.name);
 
-  }
-  initForm() {
-    this.businessInfoForm = this.fb.group({
-      first_name: [this.registrationValues?.first_name, Validators.required],
-      last_name: [this.registrationValues?.last_name, Validators.required],
-      email: [this.registrationValues?.email, Validators.required],
-      phone: [this.registrationValues?.phone, Validators.required],
-      password: [this.registrationValues?.password, Validators.required],
-      privacy_policy: [this.registrationValues?.privacy_policy, Validators.required],
-
-      business_type: [null, Validators.required],
-      business_types: [null, Validators.required],
-      governorate: [null, Validators.required],
-      district: [null, Validators.required],
-      how_know_us: [null, Validators.required],
-      isCurrentlyUsing: ['no', Validators.required],
-    });
-    this.businessInfoForm.get('how_know_us')?.setValue(this.selectedSocialValue.name);
   }
 
   onCheckboxChange(event: any) {
@@ -78,7 +56,7 @@ export class BusinessInfoComponent {
         this.selectedValues.splice(index, 1);
       }
     }
-    this.businessInfoForm.get('business_types')?.setValue(this.selectedValues)
+    this.registrationForm.get('business_types')?.setValue(this.selectedValues)
   }
 
 
@@ -89,8 +67,7 @@ export class BusinessInfoComponent {
 
 
   getBusinessInfoValue(): void {
-    console.log(this.businessInfoForm.value);
-    this.businessInfoFormValue.emit(this.businessInfoForm.value);
+    console.log(this.registrationForm.value);
     this.isLoading = true;
     setTimeout(() => {
       window.location.reload()

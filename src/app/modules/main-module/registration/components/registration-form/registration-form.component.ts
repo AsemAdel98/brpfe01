@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { GlobalFunctionsService } from '../../../../../core/services/global-functions.service';
 
 @Component({
@@ -8,8 +8,9 @@ import { GlobalFunctionsService } from '../../../../../core/services/global-func
   styleUrl: './registration-form.component.scss',
 })
 export class RegistrationFormComponent {
-  @Output() registrationValue = new EventEmitter<any>();
-  @Input() initialData: any;
+  @Output() nextPage = new EventEmitter<any>();
+  @Input() registrationForm!: FormGroup;
+  @Input() verificationForm!: FormGroup;
 
   passwordFieldType: string = 'password';
   countries = [
@@ -20,11 +21,9 @@ export class RegistrationFormComponent {
   phoneNumber!: string;
   countdown: number = 60;
   countdownMessage!: string;
-  registrationForm!: FormGroup;
-  verificationForm!: FormGroup;
   phoneNumberDisplay!: string;
 
-  constructor(private fb: FormBuilder,public global: GlobalFunctionsService) { }
+  constructor(public global: GlobalFunctionsService) { }
 
   togglePasswordVisibility(): void {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
@@ -32,30 +31,6 @@ export class RegistrationFormComponent {
 
   selectCountry(country: any): void {
     this.selectedCountry = country;
-  }
-
-
-
-
-  ngOnInit(): void {
-    this.initForm();
-  }
-
-  initForm() {
-    this.registrationForm = this.fb.group({
-      first_name: [this.initialData?.first_name || null,[Validators.required, Validators.minLength(4)]],
-      last_name: [this.initialData?.last_name || null,[Validators.required, Validators.minLength(4)]],
-      email: [this.initialData?.email || null, [Validators.required, Validators.email]],
-      phone: [this.initialData?.phone || null, Validators.required],
-      password: [this.initialData?.password || null, [Validators.required, Validators.minLength(8)]],
-      privacy_policy: [this.initialData?.privacy_policy || null, Validators.required],
-    });
-    this.verificationForm = this.fb.group({
-      code1: [null, [Validators.required, Validators.maxLength(1)]],
-      code2: [null, [Validators.required, Validators.maxLength(1)]],
-      code3: [null, [Validators.required, Validators.maxLength(1)]],
-      code4: [null, [Validators.required, Validators.maxLength(1)]],
-    });
   }
 
   updatePhoneNumber(event: Event): void {
@@ -102,8 +77,8 @@ export class RegistrationFormComponent {
   }
 
   getRegistrationValue(): void {
+    this.nextPage.emit();
     console.log(this.registrationForm.value);
-    this.registrationValue.emit({ value: this.registrationForm.value, isSuccess: true });
     const verificationCode = `${this.verificationForm.get('code1')?.value}${this.verificationForm.get('code2')?.value}${this.verificationForm.get('code3')?.value}${this.verificationForm.get('code4')?.value}`;
     console.log('Verification code:', verificationCode);
   }
