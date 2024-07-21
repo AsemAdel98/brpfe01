@@ -1,0 +1,13 @@
+<button class="btn btn-outline dropdown-toggle d-flex justify-content-between align-items-center" type="button"
+  data-bs-toggle="dropdown">
+  <div><img
+      [src]="global.currentLanguage === 'ar' ? '../../../../assets/imgs/sa-flag.png' : '../../../../assets/imgs/english.png'"
+      alt="flag">&nbsp;&nbsp; {{(global.currentLanguage === 'ar'?'LANGUAGE_BUTTONS.ARABIC':'LANGUAGE_BUTTONS.ENGLISH')
+    |translate}}</div>
+
+</button>
+<ul class="dropdown-menu ">
+  <li *ngFor="let item of language_buttons" (click)="setLanguage(item)">
+    <a class="dropdown-item d-flex justify-content-between"> <img [src]="item.img" alt="flag">&nbsp;&nbsp; {{item.label |translate}}</a>
+  </li>
+</ul>

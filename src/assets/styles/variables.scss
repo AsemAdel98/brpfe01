@@ -1,0 +1,41 @@
+:root {
+  --primary-color: #635ca8;
+  --primary-light: #7c77b9;
+  --primary-lighter: #958fca;
+  --primary-dark: #4f4b85;
+  --primary-darker: #3a3762;
+  --primary-contrast: #ffffff;
+  --primary-disabled: #b3b3b3;
+  --text-color: #454c66;
+}
+
+
+
+
+
+
+// ------------------------------------------- fonts
+$LamaSans-regular: "LamaSans-regular";
+$LamaSans-medium: "LamaSans-medium";
+$LamaSans-Bold: "LamaSans-Bold";
+$LamaSans-SemiBold: "LamaSans-SemiBold";
+
+@font-face {
+  font-family: "LamaSans-regular";
+  src: url("../fonts/LamaSans_Standard/LamaSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "LamaSans-medium";
+  src: url("../fonts/LamaSans_Standard/LamaSans-Medium.ttf");
+}
+
+@font-face {
+  font-family: "LamaSans-Bold";
+  src: url("../fonts/LamaSans_Standard/LamaSans-Bold.ttf");
+}
+
+@font-face {
+  font-family: "LamaSans-SemiBold";
+  src: url("../fonts/LamaSans_Standard/LamaSans-SemiBold.ttf");
+}

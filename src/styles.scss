@@ -1,0 +1,78 @@
+@import "assets/styles/variables.scss";
+@import "assets/styles/typography.scss";
+@import "assets/styles/arabic-style.scss";
+@import "assets/styles/english-style.scss";
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+html {
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--primary-lighter);
+  }
+
+  &>* {
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--primary-lighter);
+    }
+  }
+}
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--primary-contrast);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.btn-primary:disabled,
+.btn-primary:disabled:hover {
+  background-color: var(--primary-disabled);
+  border-color: var(--primary-disabled);
+  color: var(--primary-disabled-contrast);
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.get-help {
+  color: var(--primary-color);
+  font-family: $LamaSans-Bold;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+

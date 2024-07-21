@@ -1,0 +1,177 @@
+<div class="row m-0">
+  <div class="col-xl-3 p-0 slide-container">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="overlay"></div>
+          <img src="../../../../../../assets/imgs/1.jpg" class="d-block w-100" alt="Slide 1">
+        </div>
+        <div class="carousel-item">
+          <div class="overlay"></div>
+          <img src="../../../../../../assets/imgs/2.jpg" class="d-block w-100" alt="Slide 2">
+        </div>
+        <div class="carousel-item">
+          <div class="overlay"></div>
+          <img src="../../../../../../assets/imgs/3.jpg" class="d-block w-100" alt="Slide 3">
+        </div>
+      </div>
+    </div>
+    <div class="slide-card-container">
+      <div class="card">
+        <p>{{'REGISTRATION_FORM.CARD_PR'|translate}}</p>
+        <h3>Salma Mohamed</h3>
+        <p>{{'REGISTRATION_FORM.CARD_PO'|translate}}</p>
+      </div>
+      <div class="card-shape"><img src="../../../../../../assets/imgs/quote.png" alt="Quote Icon"></div>
+    </div>
+  </div>
+  <div class="col-xl-9">
+    <div class="d-flex align-items-center justify-content-between my-4">
+      <p class="text-end m-0">{{'REGISTRATION_FORM.HAVING_TROUBLES'|translate}}? <a href="#" target="_blank"
+          class="get-help">{{'REGISTRATION_FORM.GET_HELP'|translate}}</a></p>
+      <app-language-button></app-language-button>
+    </div>
+    @if(global.currentLanguage === 'ar'){
+    <h2>ابدأ <span class="business">عملك<img src="../../../../../../assets/imgs/Vector 1.png" alt="Vector"></span> الآن
+    </h2>
+    }@else{
+    <h2>Start your <span class="business">business<img src="../../../../../../assets/imgs/Vector 1.png"
+          alt="Vector"></span> now</h2>
+    }
+    <p class="mb-0">{{'REGISTRATION_FORM.CREATE_YOUR_COMAPNY_PR'|translate}}</p>
+    <p>{{'REGISTRATION_FORM.ENTER_YOUR_EMAIL'|translate}}</p>
+    <form [formGroup]="registrationForm">
+      <div class="row">
+        <!-- ------------------------ first_name ------------------------ -->
+        <div class="col-xl-6">
+          <label for="First_Name" class="form-label">{{'REGISTRATION_FORM.FIRST_NAME'|translate}}</label>
+          <input type="text" formControlName="first_name" class="form-control" id="First_Name"
+            aria-describedby="firstNameHelp">
+            <div *ngIf="registrationForm.controls['first_name'].invalid && (registrationForm.controls['first_name'].dirty || registrationForm.controls['first_name'].touched)">
+              <small class="text-danger" *ngIf="registrationForm.controls['first_name'].errors?.['required']">{{'REGISTRATION_FORM.FIRST_NAME_REQUIRED'|translate}}</small>
+              <small class="text-danger" *ngIf="registrationForm.controls['first_name'].errors?.['minlength']">{{'REGISTRATION_FORM.FIRST_NAME_ERROR_CHARACTERS'|translate}}</small>
+            </div>
+          </div>
+          <!-- ------------------------ last_name ------------------------ -->
+          <div class="col-xl-6">
+            <label for="Last_Name" class="form-label">{{'REGISTRATION_FORM.LAST_NAME'|translate}}</label>
+            <input type="text" formControlName="last_name" class="form-control" id="Last_Name"
+            aria-describedby="lastNameHelp">
+            <div *ngIf="registrationForm.controls['last_name'].invalid && (registrationForm.controls['last_name'].dirty || registrationForm.controls['last_name'].touched)">
+              <small class="text-danger" *ngIf="registrationForm.controls['last_name'].errors?.['required']">{{'REGISTRATION_FORM.LAST_NAME_REQUIRED'|translate}}</small>
+              <small class="text-danger" *ngIf="registrationForm.controls['last_name'].errors?.['minlength']">{{'REGISTRATION_FORM.LAST_NAME_ERROR_CHARACTERS'|translate}}</small>
+            </div>
+        </div>
+        <!-- ------------------------ email ------------------------ -->
+        <div class="col-xl-6">
+          <label for="Email" class="form-label">{{'REGISTRATION_FORM.EMAL'|translate}}</label>
+          <input type="email" formControlName="email" class="form-control" id="Email" aria-describedby="emailHelp">
+          <div *ngIf="registrationForm.controls['email'].invalid && (registrationForm.controls['email'].dirty || registrationForm.controls['email'].touched)">
+            <small class="text-danger" *ngIf="registrationForm.controls['email'].errors?.['required']">{{'REGISTRATION_FORM.EMAIL_REQUIRED'|translate}}</small>
+            <small class="text-danger" *ngIf="registrationForm.controls['email'].errors?.['email']">{{'REGISTRATION_FORM.EMAIL_ERROR'|translate}}</small>
+          </div>
+        </div>
+        <!-- ------------------------ phone ------------------------ -->
+        <div class="col-xl-6">
+          <label for="Phone_Number" class="form-label">{{'REGISTRATION_FORM.PHONE'|translate}}</label>
+          <div class="input-group phone-number">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false" aria-label="Select Country Code">
+              <img [src]="selectedCountry.flag" [alt]="selectedCountry.flag">
+              {{selectedCountry.code}}
+            </button>
+            <ul class="dropdown-menu">
+              <li *ngFor="let country of countries" (click)="selectCountry(country)">
+                <a class="dropdown-item">
+                  <img [src]="country.flag" [alt]="country.flag"> ({{country.code}})
+                </a>
+              </li>
+            </ul>
+            <input type="number" (input)="updatePhoneNumber($event)" class="form-control" id="Phone_Number">
+          </div>
+        </div>
+        <!-- ------------------------ password ------------------------ -->
+        <div class="col-xl-6">
+          <label for="Password_input" class="form-label">{{'REGISTRATION_FORM.PASSWORD'|translate}}</label>
+          <div class="input-group">
+            <input [type]="passwordFieldType" formControlName="password" class="form-control" id="Password_input"
+              required aria-describedby="passwordHelp">
+            <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()"
+              aria-label="Toggle Password Visibility">
+              <i [ngClass]="passwordFieldType === 'text' ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
+            </button>
+          </div>
+          <div *ngIf="registrationForm.controls['password'].invalid && (registrationForm.controls['password'].dirty || registrationForm.controls['password'].touched)">
+            <small class="text-danger" *ngIf="registrationForm.controls['password'].errors?.['required']">{{'REGISTRATION_FORM.PASSWORD_REQUIRED'|translate}}</small>
+            <small class="text-danger" *ngIf="registrationForm.controls['password'].errors?.['minlength']">{{'REGISTRATION_FORM.PASSWORD_ERROR'|translate}}</small>
+          </div>
+        </div>
+        <div class="col-xl-12">
+          <!-- ------------------------ privacy_policy ------------------------ -->
+           <div class="row d-flex justify-content-between">
+             <div class="col-xl-4 mt-5">
+               <input class="form-check-input" formControlName="privacy_policy" required type="checkbox"
+                 id="Agree_to_the_privacy" aria-describedby="privacyPolicyHelp">
+               <label class="form-check-label w-75" for="Agree_to_the_privacy">
+                 &nbsp;
+                 @if(global.currentLanguage === 'ar'){
+                 الموافقة على <a href="#" target="_blank">سياسة الخصوصية</a> و <a href="#" target="_blank">الشروط
+                   والأحكام</a>.
+                 }@else{
+                 Agree to the <a href="#" target="_blank">privacy policy</a> and <a href="#" target="_blank">terms &
+                   conditions</a>.
+                 }
+               </label>
+             </div>
+             <div class="col-xl-4 mt-5 d-flex justify-content-end">
+               <button type="button" [disabled]="!registrationForm.valid" class="btn btn-primary" data-bs-toggle="modal"
+                 (click)="startCountdown()" data-bs-target="#exampleModal" aria-label="Next Step">
+                 {{'REGISTRATION_FORM.NEXT'|translate}}&nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i>
+               </button>
+             </div>
+           </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-------------------------- Modal ------------------------------------>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button type="button" class="btn-close m-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-body mx-3">
+        <img src="../../../../../../assets/imgs/model-image.png" alt="Verification Image">
+
+        <h2>{{'REGISTRATION_FORM.VERIFICATION_CODE'|translate}}</h2>
+        <p>{{'REGISTRATION_FORM.PLEASE_ENTER_VERIFICATION'|translate}} {{phoneNumberDisplay}}</p>
+
+        <form [formGroup]="verificationForm" class="d-flex justify-content-center mb-3">
+          <input type="text" formControlName="code1" class="form-control mx-2 text-center" maxlength="1"
+            (input)="onInput($event)">
+          <input type="text" formControlName="code2" class="form-control mx-2 text-center" maxlength="1"
+            (input)="onInput($event)">
+          <input type="text" formControlName="code3" class="form-control mx-2 text-center" maxlength="1"
+            (input)="onInput($event)">
+          <input type="text" formControlName="code4" class="form-control mx-2 text-center" maxlength="1"
+            (input)="onInput($event)">
+        </form>
+        <p>{{'REGISTRATION_FORM.COUNT_MSG'|translate}} <span class="get-help">{{countdown}}</span>
+          {{'REGISTRATION_FORM.SECOUND'|translate}}</p>
+        <div >
+          <button type="button" class="btn btn-primary" [disabled]="!verificationForm.valid" data-bs-dismiss="modal"
+            aria-label="Close" (click)="getRegistrationValue();">{{'REGISTRATION_FORM.VERIFY'|translate}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+@import "variables.scss";
+
+h1 {
+  font-family: $LamaSans-Bold;
+  font-variation-settings: 'wght' 700, 'wdth' 150, 'ital' 0;
+  font-size: clamp(30px, 4.177545691906006vw, 80px);
+  color: var(--text-color);
+
+}
+
+h2 {
+  font-family: $LamaSans-Bold;
+  font-variation-settings: 'wght' 500, 'wdth' 150, 'ital' 0;
+  font-size: clamp(30px, 2.610966057441253vw, 50px);
+  color: var(--text-color);
+}
+
+h3 {
+  font-family: $LamaSans-SemiBold;
+  font-variation-settings: 'wght' 400, 'wdth' 150, 'ital' 0;
+  font-size: clamp(25px, 1.5665796344647518vw, 30px);
+  color: var(--text-color);
+}
+
+h4 {
+  font-family: $LamaSans-SemiBold;
+  font-variation-settings: 'wght' 400, 'wdth' 150, 'ital' 0;
+  font-size: clamp(18px, 1.3054830287206265vw, 25px);
+  color: var(--text-color);
+}
+
+h5 {
+  font-family: $LamaSans-regular;
+  font-variation-settings: 'wght' 400, 'wdth' 150, 'ital' 0;
+  font-size: clamp(18px, 1.3054830287206265vw, 25px);
+  color: var(--text-color);
+}
+
+h6 {
+  font-family: $LamaSans-SemiBold;
+  font-variation-settings: 'wght' 400, 'wdth' 150, 'ital' 0;
+  font-size: clamp(16px, 1.1488250652741514vw, 22px);
+  color: var(--text-color) ;
+}
+
+a {
+  text-decoration: none;
+  font-family: $LamaSans-regular;
+}
+
+P {
+  font-family: $LamaSans-regular;
+  font-size: 16px;
+}

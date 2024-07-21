@@ -1,0 +1,79 @@
+@import '../../../../../../assets/styles/variables.scss';
+
+.slide-container {
+  position: relative;
+
+  .carousel {
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(180deg, rgba(99, 92, 168, 0.21332282913165268) 0%, rgba(99, 92, 168, 0.34217436974789917) 29%, rgba(99, 92, 168, 0.711922268907563) 87%, rgba(99, 92, 168, 1) 100%);
+    }
+
+    img {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    .carousel-indicators {
+      justify-content: end;
+    }
+  }
+
+  .slide-card-container {
+    position: absolute;
+    bottom: 60px;
+
+    .card {
+      position: relative;
+      border-radius: 30px 12px;
+      padding: 1rem;
+    }
+
+    .card-shape {
+      position: absolute;
+      top: -49px;
+
+      img {
+        width: 100px;
+      }
+    }
+  }
+}
+
+.col-xl-9 {
+  padding: 2rem 4rem;
+}
+
+.business {
+  position: relative;
+
+  img {
+    width: 30rem;
+    position: absolute;
+    width: 10rem;
+    bottom: -10px;
+    left: 0;
+  }
+}
+
+.phone-number {
+  img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
+}
+
+.modal-body {
+  display: grid;
+  justify-items: center;
+}
+
+@media screen and (max-width: 745px) {
+  .slide-card-container {
+    display: none;
+  }
+}

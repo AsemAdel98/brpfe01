@@ -1,0 +1,55 @@
+  {
+    "LANGUAGE_BUTTONS": {
+      "ENGLISH": "English",
+      "ARABIC": "Arabic"
+    },
+    "REGISTRATION_FORM": {
+      "CARD_PR": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non mollitia tenetur expedita.",
+      "CARD_PO": "Founder, Soliter Salon",
+      "HAVING_TROUBLES": "Having troubles",
+      "GET_HELP": "Get Help",
+      "CREATE_YOUR_COMAPNY_PR": "Creating your company is just a few steps away,",
+      "ENTER_YOUR_EMAIL": "Enter your email address to continue.",
+      "FIRST_NAME": "First Name",
+      "LAST_NAME": "Last Name",
+      "EMAL": "Email Address",
+      "PHONE": "Phone Number",
+      "PASSWORD": "Password",
+      "NEXT": "NEXT",
+      "FIRST_NAME_REQUIRED": "First name is required.",
+      "FIRST_NAME_ERROR_CHARACTERS": "First name must be at least 4 characters long.",
+      "LAST_NAME_REQUIRED": "Last name is required.",
+      "LAST_NAME_ERROR_CHARACTERS": "Last name must be at least 4 characters long.",
+      "EMAIL_REQUIRED": "Email is required.",
+      "EMAIL_ERROR": "Invalid email address.",
+      "PASSWORD_REQUIRED": "Password is required.",
+      "PASSWORD_ERROR": ">Password must be at least 8 characters long.",
+      "VERIFICATION_CODE": "Verification Code",
+      "PLEASE_ENTER_VERIFICATION": "Please enter the verification code sent to your phone number",
+      "COUNT_MSG": "The code will be sent again within",
+      "SECOUND": "Secound",
+      "VERIFY": "Verify"
+    },
+    "BUSINESS_INFO": {
+      "CARD_TITLE": "Few clicks away from creating your business",
+      "CARD_PR": "Start your business in minutes. save time and money",
+      "CHOOSE_TYPE_OF_BUSINESS": "Choose the type of business",
+      "CHOOSE_TYPE_OF_BUSINESS_PR": "To get start tell us what type of Business you are going to incorporate and name",
+      "BUSINESS_TYPE": "business type",
+      "BUSINESS_TYPES": "business types",
+      "GOVERNORATE": "Governorate",
+      "DISTRICT": "District",
+      "NO_FOUND_DATA": "No found data",
+      "HOW_KNOW_US": "How did you know us",
+      "ARE_CURRENTLY_USING_SYSTEM": "Are you currently using system",
+      "YES": "Yes",
+      "NO": "No",
+      "CREATE_ACCOUNT": "Create Account",
+      "IS_REQUIRED": " is required."
+    },
+    "SWEET_MSG": {
+      "SUCCESSFULLY": "Successfully",
+      "SUCCESSFULLY_CREATE_PR": "Your account successfully created",
+      "SUCCESSFULLY_PR": "Just few steps more to setup your business account"
+    }
+  }

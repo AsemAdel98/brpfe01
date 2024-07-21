@@ -1,0 +1,63 @@
+{
+  "LANGUAGE_BUTTONS": {
+    "ENGLISH": "الإنجليزية",
+    "ARABIC": "العربية"
+  },
+  "REGISTRATION_FORM": {
+    "CARD_PR": "لوريم إيبسوم دولار سيت أميت، كونسيكتيتور أديبيسيسينغ إيليت. نون موليتيا تينيتور إكسبيديتي.",
+    "CARD_PO": "المؤسس، صالون سوليتر",
+
+    "HAVING_TROUBLES": "هل تواجه مشاكل",
+    "GET_HELP": "الحصول على المساعدة",
+    "CREATE_YOUR_COMAPNY_PR": "إنشاء شركتك على بعد خطوات قليلة فقط،",
+    "ENTER_YOUR_EMAIL": "أدخل عنوان بريدك الإلكتروني للمتابعة.",
+    "FIRST_NAME": "الاسم الأول",
+    "LAST_NAME": "الاسم الأخير",
+    "EMAL": "عنوان البريد الإلكتروني",
+    "PHONE": "رقم الهاتف",
+    "PASSWORD": "كلمة المرور",
+    "NEXT": "التالي",
+
+    "FIRST_NAME_REQUIRED": "الاسم الأول مطلوب.",
+    "FIRST_NAME_ERROR_CHARACTERS": "يجب أن يكون الاسم الأول مكونًا من 4 أحرف على الأقل.",
+
+    "LAST_NAME_REQUIRED": "الاسم الأخير مطلوب.",
+    "LAST_NAME_ERROR_CHARACTERS": "يجب أن يكون الاسم الأخير مكونًا من 4 أحرف على الأقل.",
+
+    "EMAIL_REQUIRED": "البريد الإلكتروني مطلوب.",
+    "EMAIL_ERROR": "عنوان البريد الإلكتروني غير صالح.",
+
+    "PASSWORD_REQUIRED": "كلمة المرور مطلوبة.",
+    "PASSWORD_ERROR": "يجب أن تكون كلمة المرور مكونة من 8 أحرف على الأقل.",
+
+    "VERIFICATION_CODE": "رمز التحقق",
+    "PLEASE_ENTER_VERIFICATION": "يرجى إدخال رمز التحقق المرسل إلى رقم هاتفك",
+    "COUNT_MSG": "سيتم إرسال الرمز مرة أخرى خلال",
+    "SECOUND": "ثانية",
+    "VERIFY": "تحقق"
+  },
+
+  "BUSINESS_INFO": {
+    "CARD_TITLE": "نقرات قليلة تفصلك عن إنشاء عملك .",
+    "CARD_PR": "ابدأ عملك في دقائق. وفر الوقت والمال .",
+    "CHOOSE_TYPE_OF_BUSINESS": "اختر نوع النشاط التجاري",
+    "CHOOSE_TYPE_OF_BUSINESS_PR": "لبدء العمل، أخبرنا بنوع النشاط التجاري الذي ستقوم بإنشائه واسم الشركة",
+    "BUSINESS_TYPE": "نوع النشاط التجاري",
+    "BUSINESS_TYPES": "أنواع الأنشطة التجارية",
+    "GOVERNORATE": "المحافظة",
+    "DISTRICT": "المنطقة",
+    "NO_FOUND_DATA": "لم يتم العثور على بيانات",
+    "HOW_KNOW_US": "كيف تعرفت علينا",
+    "ARE_CURRENTLY_USING_SYSTEM": "هل تستخدم النظام حالياً",
+    "YES": "نعم",
+    "NO": "لا",
+    "CREATE_ACCOUNT": "إنشاء حساب",
+
+    "IS_REQUIRED": " مطلوب."
+  },
+  "SWEET_MSG": {
+    "SUCCESSFULLY": "بنجاح",
+    "SUCCESSFULLY_CREATE_PR": "تم إنشاء حسابك بنجاح",
+    "SUCCESSFULLY_PR": "بقيت بضع خطوات فقط لإعداد حساب نشاطك التجاري"
+  }
+}

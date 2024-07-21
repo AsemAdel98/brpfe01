@@ -1,0 +1,4 @@
+<app-registration-form *ngIf="!successRegistrations" (registrationValue)="registrationValue($event)"
+  [initialData]="registrationValues"></app-registration-form>
+<app-business-info *ngIf="successRegistrations" [registrationValues]="registrationValues"
+  (perviousPage)="perviosPage($event)" (businessInfoFormValue)="businessInfoValue($event)"></app-business-info>
