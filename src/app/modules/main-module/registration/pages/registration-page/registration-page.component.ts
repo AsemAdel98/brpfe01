@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,21 +6,47 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './registration-page.component.html',
   styleUrl: './registration-page.component.scss'
 })
-export class RegistrationPageComponent {
-  successRegistrations: boolean = false;
-  registrationValues:any
-  businessInfoValues:any
+export class RegistrationPageComponent implements OnInit {
+  next_page: boolean = true;
   registrationForm!: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  verificationForm!: FormGroup;
+  constructor(private fb: FormBuilder) { }
 
-  registrationValue(value: any) {
-    this.successRegistrations = value.isSuccess;
-    this.registrationValues = value.value
+  ngOnInit(): void {
+    this.initForm();
   }
-  perviosPage(value: any) {
-    this.successRegistrations = value.isSuccess
+
+  initForm() {
+    this.registrationForm = this.fb.group({
+      first_name: [null, [Validators.required, Validators.minLength(3)]],
+      last_name: [null, [Validators.required, Validators.minLength(3)]],
+      email: [null, [Validators.required, Validators.email]],
+      phone: [null, Validators.required],
+      password: [null, [Validators.required, Validators.minLength(8)]],
+      privacy_policy: [null, Validators.required],
+
+      business_type: [null, Validators.required],
+      business_types: [null, Validators.required],
+      governorate: [null, Validators.required],
+      district: [null, Validators.required],
+      how_know_us: [null, Validators.required],
+      isCurrentlyUsing: ['no', Validators.required],
+    });
+    this.verificationForm = this.fb.group({
+      code1: [null, [Validators.required, Validators.maxLength(1)]],
+      code2: [null, [Validators.required, Validators.maxLength(1)]],
+      code3: [null, [Validators.required, Validators.maxLength(1)]],
+      code4: [null, [Validators.required, Validators.maxLength(1)]],
+    });
   }
-  businessInfoValue(value: any) {
-    this.businessInfoValues = value;
+
+
+  next(value:any): void {
+    this.next_page =false;
   }
+  pervious(value:any): void {
+    this.next_page =true;
+  }
+
+
 }

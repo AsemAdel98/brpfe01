@@ -11,7 +11,7 @@
   </div>
   <div class="col-xl-9">
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <button class="btn btn-outline" (click)="perviousPage.emit(false)"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="btn btn-outline" (click)="perviousPage.emit()"><i class="fa-solid fa-arrow-left"></i></button>
       <div class="d-flex align-items-center">
         <p class="text-end m-0">{{'REGISTRATION_FORM.HAVING_TROUBLES'|translate}}? <a href="#" target="_blank"
             class="get-help">{{'REGISTRATION_FORM.GET_HELP'|translate}}</a></p>
@@ -21,16 +21,16 @@
     <h2>{{'BUSINESS_INFO.CHOOSE_TYPE_OF_BUSINESS'|translate}}</h2>
     <p class="mb-0">{{'BUSINESS_INFO.CHOOSE_TYPE_OF_BUSINESS_PR'|translate}}</p>
 
-    <form [formGroup]="businessInfoForm">
+    <form [formGroup]="registrationForm">
       <div class="row">
         <!-- ------------------------ business_type ------------------------ -->
         <div class="col-xl-12">
           <label for="Business_Type" class="form-label">{{'BUSINESS_INFO.BUSINESS_TYPE'|translate}}</label>
           <input type="text" formControlName="business_type" class="form-control" id="Business_Type">
           <div
-            *ngIf="businessInfoForm.controls['business_type'].invalid && (businessInfoForm.controls['business_type'].dirty || businessInfoForm.controls['business_type'].touched)">
+            *ngIf="registrationForm.controls['business_type'].invalid && (registrationForm.controls['business_type'].dirty || registrationForm.controls['business_type'].touched)">
             <small class="text-danger"
-              *ngIf="businessInfoForm.controls['business_type'].errors?.['required']">{{'BUSINESS_INFO.BUSINESS_TYPE'|translate}}
+              *ngIf="registrationForm.controls['business_type'].errors?.['required']">{{'BUSINESS_INFO.BUSINESS_TYPE'|translate}}
               {{'BUSINESS_INFO.IS_REQUIRED'|translate}}</small>
           </div>
         </div>
@@ -57,9 +57,9 @@
             }
           </select>
           <div
-            *ngIf="businessInfoForm.controls['governorate'].invalid && (businessInfoForm.controls['governorate'].dirty || businessInfoForm.controls['governorate'].touched)">
+            *ngIf="registrationForm.controls['governorate'].invalid && (registrationForm.controls['governorate'].dirty || registrationForm.controls['governorate'].touched)">
             <small class="text-danger"
-              *ngIf="businessInfoForm.controls['governorate'].errors?.['required']">{{'BUSINESS_INFO.GOVERNORATE'|translate}}
+              *ngIf="registrationForm.controls['governorate'].errors?.['required']">{{'BUSINESS_INFO.GOVERNORATE'|translate}}
               {{'BUSINESS_INFO.IS_REQUIRED'|translate}}</small>
           </div>
         </div>
@@ -76,9 +76,9 @@
             }
           </select>
           <div
-            *ngIf="businessInfoForm.controls['district'].invalid && (businessInfoForm.controls['district'].dirty || businessInfoForm.controls['district'].touched)">
+            *ngIf="registrationForm.controls['district'].invalid && (registrationForm.controls['district'].dirty || registrationForm.controls['district'].touched)">
             <small class="text-danger"
-              *ngIf="businessInfoForm.controls['district'].errors?.['required']">{{'BUSINESS_INFO.DISTRICT'|translate}}
+              *ngIf="registrationForm.controls['district'].errors?.['required']">{{'BUSINESS_INFO.DISTRICT'|translate}}
               {{'BUSINESS_INFO.IS_REQUIRED'|translate}}</small>
           </div>
         </div>
@@ -123,7 +123,7 @@
 
 
         <div class="d-flex justify-content-end mt-3">
-          <button type="button" [disabled]="!businessInfoForm.valid" class="btn btn-primary"
+          <button type="button" [disabled]="!registrationForm.valid" class="btn btn-primary"
             (click)="getBusinessInfoValue()">{{'BUSINESS_INFO.CREATE_ACCOUNT'|translate}}&nbsp;&nbsp;<i
               class="fa-solid fa-arrow-right"></i></button>
         </div>

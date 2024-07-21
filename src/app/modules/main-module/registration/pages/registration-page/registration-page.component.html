@@ -1,4 +1,7 @@
-<app-registration-form *ngIf="!successRegistrations" (registrationValue)="registrationValue($event)"
-  [initialData]="registrationValues"></app-registration-form>
-<app-business-info *ngIf="successRegistrations" [registrationValues]="registrationValues"
-  (perviousPage)="perviosPage($event)" (businessInfoFormValue)="businessInfoValue($event)"></app-business-info>
+@if(next_page){
+<app-registration-form (nextPage)="next($event)"
+  [registrationForm]="registrationForm" [verificationForm]="verificationForm"></app-registration-form>
+}@else{
+<app-business-info [registrationForm]="registrationForm"
+  (perviousPage)="pervious($event)" ></app-business-info>
+}

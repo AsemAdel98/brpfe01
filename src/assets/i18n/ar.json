@@ -19,10 +19,10 @@
     "NEXT": "التالي",
 
     "FIRST_NAME_REQUIRED": "الاسم الأول مطلوب.",
-    "FIRST_NAME_ERROR_CHARACTERS": "يجب أن يكون الاسم الأول مكونًا من 4 أحرف على الأقل.",
+    "FIRST_NAME_ERROR_CHARACTERS": "يجب أن يكون الاسم الأول مكونًا من 3 أحرف على الأقل.",
 
     "LAST_NAME_REQUIRED": "الاسم الأخير مطلوب.",
-    "LAST_NAME_ERROR_CHARACTERS": "يجب أن يكون الاسم الأخير مكونًا من 4 أحرف على الأقل.",
+    "LAST_NAME_ERROR_CHARACTERS": "يجب أن يكون الاسم الأخير مكونًا من 3 أحرف على الأقل.",
 
     "EMAIL_REQUIRED": "البريد الإلكتروني مطلوب.",
     "EMAIL_ERROR": "عنوان البريد الإلكتروني غير صالح.",
